@@ -1,9 +1,9 @@
-from flask import Flask, request, send_file, jsonify
+from flask import Flask, request, send_file, jsonify, after_this_request
 import os
 import tempfile
 import subprocess
 import shlex
-import uuid
+import shutil
 
 app = Flask(__name__)
 
@@ -15,20 +15,36 @@ def download():
         return jsonify({"error":"Missing 'url' in request body"}), 400
 
     tmpdir = tempfile.mkdtemp(prefix="dl_")
-    out_template = os.path.join(tmpdir, "%(title)s-%(id)s.%(ext)s")
-    cmd = f"yt-dlp --no-playlist -o {shlex.quote(out_template)} {shlex.quote(url)}"
     try:
-        subprocess.check_output(shlex.split(cmd), stderr=subprocess.STDOUT, timeout=300)
-    except subprocess.CalledProcessError as e:
-        return jsonify({"error":"download failed", "detail": e.output.decode(errors="ignore")}), 500
-    except subprocess.TimeoutExpired:
-        return jsonify({"error":"download timed out"}), 504
+        out_template = os.path.join(tmpdir, "%(title)s-%(id)s.%(ext)s")
+        cmd = f"yt-dlp --no-playlist -o {shlex.quote(out_template)} {shlex.quote(url)}"
+        try:
+            subprocess.check_output(shlex.split(cmd), stderr=subprocess.STDOUT, timeout=300)
+        except subprocess.CalledProcessError as e:
+            shutil.rmtree(tmpdir, ignore_errors=True)
+            return jsonify({"error":"download failed", "detail": e.output.decode(errors="ignore")}), 500
+        except subprocess.TimeoutExpired:
+            shutil.rmtree(tmpdir, ignore_errors=True)
+            return jsonify({"error":"download timed out"}), 504
 
-    files = [os.path.join(tmpdir, f) for f in os.listdir(tmpdir)]
-    if not files:
-        return jsonify({"error":"no file downloaded"}), 500
-    filepath = files[0]
-    return send_file(filepath, as_attachment=True)
+        files = [os.path.join(tmpdir, f) for f in os.listdir(tmpdir)]
+        if not files:
+            shutil.rmtree(tmpdir, ignore_errors=True)
+            return jsonify({"error":"no file downloaded"}), 500
+        filepath = files[0]
+        
+        @after_this_request
+        def cleanup(response):
+            try:
+                shutil.rmtree(tmpdir)
+            except Exception:
+                pass
+            return response
+        
+        return send_file(filepath, as_attachment=True)
+    except Exception as e:
+        shutil.rmtree(tmpdir, ignore_errors=True)
+        raise
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
