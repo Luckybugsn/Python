@@ -4,12 +4,14 @@ This is a Flask-based web service that provides video/audio downloading function
 
 # Recent Changes
 
-**October 15, 2025**: Initial project setup
+**October 15, 2025**: Initial project setup and web interface
 - Created Flask application with /download endpoint
 - Installed Flask and yt-dlp dependencies
 - Installed ffmpeg system dependency for video processing
 - Configured Flask Server workflow running on port 5000
 - Implemented comprehensive cleanup logic for temporary files on all code paths (success and error)
+- Added home page route with web-based user interface
+- Created responsive HTML interface for easy video downloading
 
 # User Preferences
 
