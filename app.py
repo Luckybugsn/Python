@@ -1,4 +1,4 @@
-from flask import Flask, request, send_file, jsonify, after_this_request
+from flask import Flask, request, send_file, jsonify, after_this_request, render_template
 import os
 import tempfile
 import subprocess
@@ -6,6 +6,10 @@ import shlex
 import shutil
 
 app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return render_template("index.html")
 
 @app.route("/download", methods=["POST"])
 def download():
