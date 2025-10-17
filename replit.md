@@ -4,6 +4,15 @@ This is a Flask-based web service that provides video/audio downloading function
 
 # Recent Changes
 
+**October 17, 2025**: Major UI redesign similar to fastdl.app
+- Redesigned entire landing page with modern, clean aesthetic
+- Added full-page layout with header, hero section, and footer
+- Implemented "How to Download" section with 3-step visual guide
+- Added features showcase section highlighting key benefits
+- Created interactive FAQ accordion section
+- Added Paste and Clear buttons for better UX
+- Made fully responsive for mobile, tablet, and desktop devices
+
 **October 15, 2025**: Initial project setup and web interface
 - Created Flask application with /download endpoint
 - Installed Flask and yt-dlp dependencies
