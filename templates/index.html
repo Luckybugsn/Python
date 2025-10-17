@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Downloader - Download Videos from YouTube and More</title>
+    <title>YouTube Video Downloader - Download YouTube, Instagram, TikTok Videos Free | Online Video Downloader</title>
+    <meta name="description" content="Free online video downloader to download YouTube videos, Instagram reels, TikTok videos without watermark. Fast, HD quality, no registration required. Download videos from YouTube to MP4, MP3 instantly.">
+    <meta name="keywords" content="youtube downloader, download youtube video, youtube to mp4, instagram video downloader, tiktok downloader, download instagram reels, video downloader, youtube video download, free video downloader, online video downloader, download tiktok without watermark, youtube to mp3, download instagram video, save tiktok video">
     <style>
         * {
             margin: 0;
@@ -39,7 +41,7 @@
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 60px 20px;
+            padding: 60px 20px 40px;
             text-align: center;
         }
 
@@ -51,8 +53,47 @@
 
         .hero p {
             font-size: 18px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             opacity: 0.95;
+        }
+
+        .platforms {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            padding: 0 20px;
+        }
+
+        .platform-item {
+            text-align: center;
+            color: white;
+        }
+
+        .platform-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px;
+            font-size: 28px;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .platform-icon:hover {
+            transform: scale(1.1);
+            background: rgba(255,255,255,0.3);
+        }
+
+        .platform-name {
+            font-size: 13px;
+            font-weight: 600;
+            opacity: 0.9;
         }
 
         .download-box {
@@ -242,6 +283,55 @@
             line-height: 1.6;
         }
 
+        .seo-content {
+            background: white;
+            padding: 80px 20px;
+        }
+
+        .seo-content h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .seo-content h3 {
+            font-size: 24px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        .seo-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .seo-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .seo-content ul li {
+            padding: 8px 0;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .seo-content ul li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .keyword-highlight {
+            background: linear-gradient(120deg, #667eea20 0%, #764ba220 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
         .faq {
             background: white;
         }
@@ -336,20 +426,57 @@
             .btn-secondary {
                 width: 100%;
             }
+
+            .platforms {
+                gap: 20px;
+            }
+
+            .platform-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 24px;
+            }
         }
     </style>
 </head>
 <body>
     <header class="header">
         <div class="container">
-            <h1>🎬 Video Downloader</h1>
+            <h1>🎬 Free Video Downloader</h1>
         </div>
     </header>
 
     <section class="hero">
         <div class="container">
-            <h2>Download Videos in High Quality</h2>
-            <p>Download videos from YouTube, Vimeo, Dailymotion and many other platforms</p>
+            <h2>YouTube Video Downloader - Download Videos in HD Quality</h2>
+            <p>Download videos from YouTube, Instagram, TikTok, Facebook, Twitter, Vimeo & 1000+ sites</p>
+            
+            <div class="platforms">
+                <div class="platform-item">
+                    <div class="platform-icon">▶️</div>
+                    <div class="platform-name">YouTube</div>
+                </div>
+                <div class="platform-item">
+                    <div class="platform-icon">📷</div>
+                    <div class="platform-name">Instagram</div>
+                </div>
+                <div class="platform-item">
+                    <div class="platform-icon">🎵</div>
+                    <div class="platform-name">TikTok</div>
+                </div>
+                <div class="platform-item">
+                    <div class="platform-icon">👥</div>
+                    <div class="platform-name">Facebook</div>
+                </div>
+                <div class="platform-item">
+                    <div class="platform-icon">🐦</div>
+                    <div class="platform-name">Twitter</div>
+                </div>
+                <div class="platform-item">
+                    <div class="platform-icon">📹</div>
+                    <div class="platform-name">Vimeo</div>
+                </div>
+            </div>
             
             <div class="download-box">
                 <form id="downloadForm">
@@ -357,7 +484,7 @@
                         <input 
                             type="text" 
                             id="url" 
-                            placeholder="Paste video URL here..." 
+                            placeholder="Paste YouTube, Instagram, TikTok video URL here..." 
                             required
                         >
                         <button type="button" class="btn-secondary" id="pasteBtn">Paste</button>
@@ -365,7 +492,7 @@
                     </div>
                     
                     <button type="submit" class="btn-primary" id="downloadBtn">
-                        Download
+                        Download Video
                     </button>
                 </form>
                 
@@ -376,60 +503,101 @@
 
     <section class="section">
         <div class="container">
-            <h2 class="section-title">How to Download Videos?</h2>
+            <h2 class="section-title">How to Download YouTube Videos & Instagram Reels?</h2>
             <div class="steps">
                 <div class="step">
                     <div class="step-icon">📋</div>
-                    <h3>Copy the URL</h3>
-                    <p>Open your video platform, find the video you want, and copy its URL from the address bar</p>
+                    <h3>Copy Video URL</h3>
+                    <p>Open YouTube, Instagram, or TikTok app, find the video you want to download, and copy the video link from the address bar or share button</p>
                 </div>
                 <div class="step">
                     <div class="step-icon">📌</div>
-                    <h3>Paste the Link</h3>
-                    <p>Return to this page, paste the link into the input field above, and click the Download button</p>
+                    <h3>Paste Link & Download</h3>
+                    <p>Paste the YouTube or Instagram video URL into our downloader above and click the "Download Video" button to start processing</p>
                 </div>
                 <div class="step">
                     <div class="step-icon">⬇️</div>
-                    <h3>Download</h3>
-                    <p>Your video will be processed and downloaded to your device in high quality</p>
+                    <h3>Save to Device</h3>
+                    <p>Your YouTube video or Instagram reel will be downloaded in high quality MP4 format to your device instantly</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <section class="section seo-content">
+        <div class="container">
+            <h2>Best Free Online Video Downloader for YouTube, Instagram & TikTok</h2>
+            <p>Looking for a reliable <span class="keyword-highlight">YouTube video downloader</span> or <span class="keyword-highlight">Instagram reels downloader</span>? Our free online video downloader lets you <span class="keyword-highlight">download YouTube videos to MP4</span>, save Instagram reels, and download TikTok videos without watermark - all in one place!</p>
+
+            <h3>Download YouTube Videos in HD Quality</h3>
+            <p>Our <span class="keyword-highlight">YouTube downloader</span> supports all video formats and qualities. You can easily <span class="keyword-highlight">download YouTube videos</span> in 1080p, 720p, 4K, or even 8K resolution. Simply paste the YouTube video URL and get your video downloaded instantly. No software installation required - it's a completely <span class="keyword-highlight">online YouTube video downloader</span>.</p>
+
+            <h3>Instagram Video Downloader & Reels Downloader</h3>
+            <p>Save your favorite Instagram content with our powerful <span class="keyword-highlight">Instagram video downloader</span>. Download Instagram reels, IGTV videos, stories, and regular posts in their original quality. Our tool helps you <span class="keyword-highlight">download Instagram videos</span> without any watermark, making it the best Instagram downloader available online.</p>
+
+            <h3>TikTok Video Downloader Without Watermark</h3>
+            <p>Want to save TikTok videos without that annoying watermark? Our <span class="keyword-highlight">TikTok downloader</span> removes watermarks automatically. You can <span class="keyword-highlight">download TikTok videos</span> in HD quality and save them directly to your phone or computer. It's the fastest <span class="keyword-highlight">TikTok video downloader</span> that works on all devices.</p>
+
+            <h3>Multi-Platform Video Downloader</h3>
+            <p>Besides YouTube, Instagram, and TikTok, our universal <span class="keyword-highlight">video downloader</span> supports:</p>
+            <ul>
+                <li><strong>Facebook Video Downloader</strong> - Download Facebook videos and reels</li>
+                <li><strong>Twitter Video Downloader</strong> - Save Twitter/X videos easily</li>
+                <li><strong>Vimeo Downloader</strong> - Download Vimeo videos in original quality</li>
+                <li><strong>Dailymotion Downloader</strong> - Save Dailymotion videos</li>
+                <li><strong>And 1000+ more sites</strong> - Download from any video platform</li>
+            </ul>
+
+            <h3>Why Choose Our YouTube & Instagram Downloader?</h3>
+            <ul>
+                <li><strong>100% Free</strong> - No registration, no hidden fees, unlimited downloads</li>
+                <li><strong>HD Quality Downloads</strong> - Download videos in 1080p, 4K quality</li>
+                <li><strong>No Watermark</strong> - TikTok and Instagram videos without watermark</li>
+                <li><strong>Fast Download Speed</strong> - Optimized servers for quick downloads</li>
+                <li><strong>All Devices Supported</strong> - Works on iPhone, Android, PC, Mac</li>
+                <li><strong>Safe & Secure</strong> - No malware, no viruses, completely safe</li>
+                <li><strong>YouTube to MP4</strong> - Convert YouTube videos to MP4 format</li>
+                <li><strong>YouTube to MP3</strong> - Extract audio from YouTube videos</li>
+            </ul>
+
+            <h3>Popular Video Downloader Keywords</h3>
+            <p>Our tool is optimized for all popular search queries including: <span class="keyword-highlight">youtube downloader</span>, <span class="keyword-highlight">download youtube video</span>, <span class="keyword-highlight">youtube to mp4</span>, <span class="keyword-highlight">youtube to mp3</span>, <span class="keyword-highlight">instagram video downloader</span>, <span class="keyword-highlight">download instagram reels</span>, <span class="keyword-highlight">tiktok downloader no watermark</span>, <span class="keyword-highlight">save instagram video</span>, <span class="keyword-highlight">free video downloader</span>, <span class="keyword-highlight">online video downloader</span>, and many more!</p>
+        </div>
+    </section>
+
     <section class="section features">
         <div class="container">
-            <h2 class="section-title">Why Choose Our Downloader?</h2>
+            <h2 class="section-title">Why Our YouTube Downloader is the Best Choice?</h2>
             <div class="feature-grid">
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
-                    <h3>Fast Download</h3>
-                    <p>Our servers are optimized to provide you with the fastest download speeds possible</p>
+                    <h3>Lightning Fast</h3>
+                    <p>Download YouTube videos in seconds with our optimized servers. Fastest video downloader for YouTube, Instagram, and TikTok</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📱</div>
                     <h3>All Devices</h3>
-                    <p>Works perfectly on mobile phones, tablets, and desktop computers</p>
+                    <p>Works on iPhone, Android, PC, Mac, iPad, and tablets. Download videos anywhere, anytime</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🎥</div>
-                    <h3>High Quality</h3>
-                    <p>Download videos in their original quality without any loss</p>
+                    <h3>HD Quality</h3>
+                    <p>Download YouTube videos in 4K, 1080p, 720p. Get Instagram reels and TikTok videos in original quality</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🔒</div>
-                    <h3>Secure & Private</h3>
-                    <p>No registration required. All downloads are processed securely</p>
+                    <h3>Safe & Private</h3>
+                    <p>No registration needed. Secure video downloads with SSL encryption. Your privacy is our priority</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🌐</div>
-                    <h3>Multiple Platforms</h3>
-                    <p>Supports YouTube, Vimeo, Dailymotion, and many other platforms</p>
+                    <h3>1000+ Sites</h3>
+                    <p>Download from YouTube, Instagram, TikTok, Facebook, Twitter, Vimeo, Dailymotion, and 1000+ platforms</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🆓</div>
                     <h3>100% Free</h3>
-                    <p>No hidden fees, no limits. Download as many videos as you want</p>
+                    <p>Completely free YouTube downloader. No fees, no limits, no watermarks. Download unlimited videos</p>
                 </div>
             </div>
         </div>
@@ -437,35 +605,45 @@
 
     <section class="section faq">
         <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
+            <h2 class="section-title">Frequently Asked Questions - Video Downloader</h2>
             <div class="faq-list">
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>What is this video downloader?</span>
+                        <span>How to download YouTube videos for free?</span>
                         <span class="faq-toggle">▼</span>
                     </div>
                     <div class="faq-answer">
-                        This is a free online tool that allows you to download videos from various platforms like YouTube, Vimeo, and more. Simply paste the video URL and click download.
+                        To download YouTube videos free, simply copy the YouTube video URL, paste it in our YouTube downloader above, and click Download. Our free YouTube video downloader will process and download your video in MP4 format instantly.
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Is it free to use?</span>
+                        <span>Can I download Instagram reels and videos?</span>
                         <span class="faq-toggle">▼</span>
                     </div>
                     <div class="faq-answer">
-                        Yes, absolutely! Our service is completely free with no hidden charges or limits on the number of downloads.
+                        Yes! Our Instagram video downloader allows you to download Instagram reels, IGTV, stories, and regular posts. Just paste the Instagram video URL and download in high quality without watermark.
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Do I need to create an account?</span>
+                        <span>How to download TikTok videos without watermark?</span>
                         <span class="faq-toggle">▼</span>
                     </div>
                     <div class="faq-answer">
-                        No registration is required. Just paste the video URL and download - it's that simple!
+                        Our TikTok downloader automatically removes watermarks. Copy the TikTok video link, paste it here, and download TikTok videos without watermark in HD quality. It works on all devices - iPhone, Android, and PC.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is this YouTube downloader free to use?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Absolutely! Our online video downloader is 100% free with no hidden charges, no registration required, and unlimited downloads. Download as many YouTube, Instagram, or TikTok videos as you want.
                     </div>
                 </div>
 
@@ -475,7 +653,7 @@
                         <span class="faq-toggle">▼</span>
                     </div>
                     <div class="faq-answer">
-                        Videos are downloaded in their original quality as available on the source platform, ensuring you get the best quality possible.
+                        You can download videos in their original quality - 4K, 1080p, 720p for YouTube videos. Instagram reels and TikTok videos are downloaded in HD quality as available on the source platform.
                     </div>
                 </div>
 
@@ -485,17 +663,27 @@
                         <span class="faq-toggle">▼</span>
                     </div>
                     <div class="faq-answer">
-                        We support YouTube, Vimeo, Dailymotion, and many other popular video platforms. Just paste any video URL and try it!
+                        Our universal video downloader supports YouTube, Instagram, TikTok, Facebook, Twitter/X, Vimeo, Dailymotion, and 1000+ other video platforms. It's the best all-in-one video downloader online.
                     </div>
                 </div>
 
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>Is it legal to download videos?</span>
+                        <span>Can I convert YouTube to MP3?</span>
                         <span class="faq-toggle">▼</span>
                     </div>
                     <div class="faq-answer">
-                        Downloading videos for personal use is generally allowed, but the copyright belongs to the content creator. Please respect copyright laws and only download content you have permission to use.
+                        Yes, you can download YouTube videos and extract audio. Our YouTube to MP3 converter allows you to download YouTube videos as MP3 audio files for offline listening.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is it legal to download YouTube videos?</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        Downloading videos for personal use is generally allowed, but copyright belongs to the content creator. Please respect copyright laws and download only content you have permission to use. Use our YouTube downloader responsibly.
                     </div>
                 </div>
             </div>
@@ -504,7 +692,8 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Video Downloader. All rights reserved.</p>
+            <p>&copy; 2025 Free Video Downloader - Download YouTube, Instagram, TikTok Videos Online</p>
+            <p style="margin-top: 10px; font-size: 14px; opacity: 0.8;">Best YouTube Downloader | Instagram Video Downloader | TikTok Downloader | Free Online Video Downloader</p>
         </div>
     </footer>
 
@@ -565,7 +754,7 @@
                     window.URL.revokeObjectURL(downloadUrl);
                     a.remove();
                     
-                    showStatus('✅ Download successful! Check your downloads folder.', 'success');
+                    showStatus('✅ Video downloaded successfully! Check your downloads folder.', 'success');
                 } else {
                     const error = await response.json();
                     showStatus(`❌ Error: ${error.error}`, 'error');
@@ -574,7 +763,7 @@
                 showStatus(`❌ Error: ${error.message}`, 'error');
             } finally {
                 downloadBtn.disabled = false;
-                downloadBtn.innerHTML = 'Download';
+                downloadBtn.innerHTML = 'Download Video';
             }
         });
 
