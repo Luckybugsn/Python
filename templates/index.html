@@ -3,787 +3,1491 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Video Downloader - Download YouTube, Instagram, TikTok Videos Free | Online Video Downloader</title>
-    <meta name="description" content="Free online video downloader to download YouTube videos, Instagram reels, TikTok videos without watermark. Fast, HD quality, no registration required. Download videos from YouTube to MP4, MP3 instantly.">
-    <meta name="keywords" content="youtube downloader, download youtube video, youtube to mp4, instagram video downloader, tiktok downloader, download instagram reels, video downloader, youtube video download, free video downloader, online video downloader, download tiktok without watermark, youtube to mp3, download instagram video, save tiktok video">
+    <title>Free Video Downloader – Download from YouTube, Instagram, TikTok & More</title>
+    <meta name="description" content="Download videos from YouTube, Instagram, TikTok, Facebook, Twitter, Vimeo and 1000+ sites. Free, fast, no sign-up required. Works on any device.">
+    <link rel="canonical" href="/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Free Video Downloader – YouTube, Instagram, TikTok & More">
+    <meta property="og:description" content="Download videos from YouTube, Instagram, TikTok and 1000+ sites for free. No sign-up, no watermark, works on any device.">
+    <meta property="og:url" content="/">
+    <meta property="og:image" content="/static/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Video Downloader – YouTube, Instagram, TikTok & More">
+    <meta name="twitter:description" content="Download videos from YouTube, Instagram, TikTok and 1000+ sites for free. No sign-up, no watermark, works on any device.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬇️</text></svg>">
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "Free Video Downloader",
+          "url": "/",
+          "description": "Download videos from YouTube, Instagram, TikTok and 1000+ sites for free.",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "/?url={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "WebApplication",
+          "name": "Free Video Downloader",
+          "applicationCategory": "MultimediaApplication",
+          "operatingSystem": "All",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "description": "Download videos from YouTube, Instagram, TikTok, Facebook, Twitter, Vimeo and 1000+ sites for free."
+        },
+        {
+          "@type": "Organization",
+          "name": "Free Video Downloader",
+          "url": "/"
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I download a video?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Copy the video URL from your browser or app, paste it into the input field above, and click Download. The file will be saved directly to your device."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Which platforms are supported?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We support YouTube, Instagram, TikTok, Facebook, Twitter/X, Vimeo, Dailymotion, and over 1000 other video platforms."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is it free to use?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes, completely free. No account, no subscription, and no hidden fees."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do downloaded videos have watermarks?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We download the original file from the platform, so there are no additional watermarks added by our tool."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What video quality will I get?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We fetch the best available quality for the video, which can range from 360p up to 4K depending on what the source platform provides."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does it work on mobile phones?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. The tool works in any modern browser on iPhone, Android, tablets, and desktop computers."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
     <style>
-        * {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --primary-light: #818cf8;
+            --secondary: #8b5cf6;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            --gradient-soft: linear-gradient(135deg, #eef2ff 0%, #f5f3ff 100%);
+            --text-primary: #111827;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --bg-white: #ffffff;
+            --bg-light: #f9fafb;
+            --bg-dark: #111827;
+            --border: #e5e7eb;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.12);
+            --shadow-primary: 0 8px 32px rgba(99,102,241,0.28);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #ffffff;
-            color: #333;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-white);
+            color: var(--text-primary);
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        img { display: block; max-width: 100%; }
+
+        /* ── SKIP LINK ── */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
             color: white;
-            padding: 20px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 8px 16px;
+            z-index: 9999;
+            border-radius: 0 0 var(--radius-sm) 0;
+            font-size: 14px;
+            font-weight: 600;
+            transition: top 0.2s;
+        }
+        .skip-link:focus { top: 0; }
+
+        /* ── NAV ── */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
         }
 
-        .header .container {
+        .nav-inner {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
-        .header h1 {
-            font-size: 28px;
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-primary);
             font-weight: 700;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 60px 20px 40px;
-            text-align: center;
-        }
-
-        .hero h2 {
-            font-size: 42px;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .hero p {
             font-size: 18px;
-            margin-bottom: 30px;
-            opacity: 0.95;
         }
 
-        .platforms {
+        .nav-brand-icon {
+            width: 34px;
+            height: 34px;
+            background: var(--gradient);
+            border-radius: var(--radius-sm);
             display: flex;
-            justify-content: center;
             align-items: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
-            padding: 0 20px;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
         }
 
-        .platform-item {
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        @media (max-width: 600px) {
+            .nav-links { display: none; }
+        }
+
+        /* ── HERO ── */
+        .hero {
+            background: var(--gradient);
+            padding: 56px 20px 80px;
             text-align: center;
-            color: white;
+            position: relative;
+            overflow: hidden;
         }
 
-        .platform-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 12px;
-            display: flex;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -60%;
+            left: -20%;
+            width: 140%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(255,255,255,0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 8px;
-            font-size: 28px;
-            transition: transform 0.3s, background 0.3s;
-        }
-
-        .platform-icon:hover {
-            transform: scale(1.1);
-            background: rgba(255,255,255,0.3);
-        }
-
-        .platform-name {
+            gap: 6px;
+            background: rgba(255,255,255,0.18);
+            border: 1px solid rgba(255,255,255,0.28);
+            color: white;
             font-size: 13px;
             font-weight: 600;
-            opacity: 0.9;
+            padding: 6px 14px;
+            border-radius: 100px;
+            margin-bottom: 20px;
+            letter-spacing: 0.01em;
         }
 
-        .download-box {
-            max-width: 800px;
-            margin: 0 auto;
+        .hero h1 {
+            font-size: clamp(26px, 5vw, 46px);
+            font-weight: 800;
+            color: white;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 14px;
+        }
+
+        .hero-sub {
+            font-size: clamp(15px, 2vw, 18px);
+            color: rgba(255,255,255,0.85);
+            max-width: 520px;
+            margin: 0 auto 36px;
+        }
+
+        /* ── DOWNLOADER TOOL ── */
+        .tool-card {
             background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            border-radius: var(--radius-xl);
+            padding: 28px 24px 24px;
+            box-shadow: var(--shadow-lg), 0 0 0 1px rgba(255,255,255,0.1);
+            max-width: 720px;
+            margin: 0 auto;
+            position: relative;
         }
 
-        .url-input-container {
+        .tool-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 12px;
+            text-align: left;
+        }
+
+        .input-row {
             display: flex;
             gap: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         #url {
             flex: 1;
-            padding: 16px 20px;
-            border: 2px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 16px;
-            transition: border-color 0.3s;
+            min-width: 0;
+            padding: 14px 18px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-md);
+            font-size: 15px;
+            color: var(--text-primary);
+            background: var(--bg-light);
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
         }
+
+        #url::placeholder { color: var(--text-muted); }
 
         #url:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(99,102,241,0.12);
         }
 
-        .btn-secondary {
-            padding: 16px 24px;
-            background: #f5f5f5;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
+        .btn-icon {
+            padding: 14px 16px;
+            background: var(--bg-light);
+            border: 2px solid var(--border);
+            border-radius: var(--radius-md);
+            font-size: 15px;
             cursor: pointer;
-            transition: background 0.3s;
-            font-weight: 600;
-            color: #333;
+            transition: background 0.2s, border-color 0.2s;
+            color: var(--text-secondary);
+            font-weight: 500;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
-        .btn-secondary:hover {
-            background: #e0e0e0;
+        .btn-icon:hover {
+            background: white;
+            border-color: var(--primary-light);
+            color: var(--primary);
         }
 
-        .btn-primary {
+        .btn-download {
             width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 16px 24px;
+            background: var(--gradient);
             color: white;
             border: none;
-            border-radius: 10px;
-            font-size: 18px;
+            border-radius: var(--radius-md);
+            font-size: 16px;
             font-weight: 700;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: opacity 0.2s, transform 0.15s, box-shadow 0.2s;
+            box-shadow: var(--shadow-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            letter-spacing: 0.01em;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        .btn-download:hover:not(:disabled) {
+            opacity: 0.92;
+            transform: translateY(-1px);
+            box-shadow: 0 12px 36px rgba(99,102,241,0.38);
         }
 
-        .btn-primary:disabled {
-            background: #ccc;
+        .btn-download:active:not(:disabled) { transform: translateY(0); }
+
+        .btn-download:disabled {
+            opacity: 0.6;
             cursor: not-allowed;
             transform: none;
         }
 
+        /* Status messages */
         .status {
-            margin-top: 15px;
-            padding: 12px;
-            border-radius: 8px;
+            margin-top: 14px;
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-weight: 500;
             display: none;
+            align-items: center;
+            gap: 8px;
             text-align: left;
         }
 
+        .status.show { display: flex; }
+
         .status.success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+            background: #f0fdf4;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
         }
 
         .status.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+            background: #fef2f2;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
         }
 
         .status.info {
-            background: #d1ecf1;
-            color: #0c5460;
-            border: 1px solid #bee5eb;
+            background: #eff6ff;
+            color: #1d4ed8;
+            border: 1px solid #bfdbfe;
         }
 
+        /* Spinner */
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2.5px solid rgba(255,255,255,0.4);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            flex-shrink: 0;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ── PLATFORMS STRIP ── */
+        .platforms-strip {
+            padding: 20px 20px 0;
+            background: var(--gradient);
+        }
+
+        .platforms-strip-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px 20px;
+            padding-bottom: 48px;
+        }
+
+        .platform-chip {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.22);
+            color: rgba(255,255,255,0.92);
+            font-size: 13px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 100px;
+            transition: background 0.2s;
+        }
+
+        .platform-chip:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        .platform-chip span:first-child { font-size: 16px; }
+
+        /* ── CONTAINER ── */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
+        /* ── SECTION SHARED ── */
         .section {
-            padding: 80px 20px;
+            padding: 72px 20px;
+        }
+
+        .section-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            text-align: center;
+            margin-bottom: 10px;
         }
 
         .section-title {
-            font-size: 36px;
+            font-size: clamp(22px, 3.5vw, 34px);
+            font-weight: 800;
+            color: var(--text-primary);
             text-align: center;
-            margin-bottom: 50px;
-            font-weight: 700;
-            color: #333;
+            line-height: 1.25;
+            letter-spacing: -0.02em;
+            margin-bottom: 14px;
         }
 
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .step {
+        .section-desc {
+            font-size: 16px;
+            color: var(--text-secondary);
             text-align: center;
-        }
-
-        .step-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 36px;
-        }
-
-        .step h3 {
-            font-size: 22px;
-            margin-bottom: 12px;
-            color: #333;
-        }
-
-        .step p {
-            color: #666;
+            max-width: 560px;
+            margin: 0 auto 52px;
             line-height: 1.7;
         }
 
-        .features {
-            background: #f8f9fa;
+        /* ── HOW IT WORKS ── */
+        .how-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+            max-width: 920px;
+            margin: 0 auto;
         }
 
+        .how-card {
+            text-align: center;
+            padding: 32px 24px;
+            border-radius: var(--radius-lg);
+            background: white;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            transition: box-shadow 0.25s, transform 0.25s;
+        }
+
+        .how-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+        }
+
+        .how-number {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .how-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--gradient-soft);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            font-size: 30px;
+        }
+
+        .how-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .how-card p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* ── SUPPORTED PLATFORMS SECTION ── */
+        .platforms-bg {
+            background: var(--bg-light);
+        }
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 16px;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .platform-tile {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 20px 12px;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+        }
+
+        .platform-tile:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+            border-color: var(--primary-light);
+        }
+
+        .platform-tile-icon {
+            font-size: 34px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .platform-tile-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .platform-tile-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        /* ── FEATURES ── */
         .feature-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
         }
 
         .feature-card {
             background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 28px 24px;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            transition: box-shadow 0.25s, transform 0.25s;
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
         }
 
-        .feature-icon {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
-
-        .feature-card h3 {
-            font-size: 20px;
-            margin-bottom: 12px;
-            color: #333;
-        }
-
-        .feature-card p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .seo-content {
-            background: white;
-            padding: 80px 20px;
-        }
-
-        .seo-content h2 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .seo-content h3 {
+        .feature-icon-wrap {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-soft);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 24px;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: #444;
+            flex-shrink: 0;
         }
 
-        .seo-content p {
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 15px;
+        .feature-text h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
         }
 
-        .seo-content ul {
-            list-style: none;
-            padding-left: 0;
+        .feature-text p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.65;
         }
 
-        .seo-content ul li {
-            padding: 8px 0;
-            color: #555;
-            line-height: 1.6;
+        /* ── TRUST SECTION ── */
+        .trust-bg {
+            background: var(--gradient);
+            color: white;
         }
 
-        .seo-content ul li:before {
-            content: "✓ ";
-            color: #667eea;
-            font-weight: bold;
-            margin-right: 8px;
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 28px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .keyword-highlight {
-            background: linear-gradient(120deg, #667eea20 0%, #764ba220 100%);
-            padding: 2px 6px;
-            border-radius: 4px;
+        .trust-item {
+            text-align: center;
+        }
+
+        .trust-stat {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            color: white;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .trust-label {
+            font-size: 15px;
+            color: rgba(255,255,255,0.8);
             font-weight: 500;
         }
 
-        .faq {
-            background: white;
+        /* ── FAQ ── */
+        .faq-list {
+            max-width: 760px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
 
-        .faq-list {
+        .faq-item {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: white;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: background 0.2s;
+        }
+
+        .faq-question:hover { background: var(--bg-light); }
+
+        .faq-chevron {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--gradient-soft);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: transform 0.3s;
+            font-size: 12px;
+            color: var(--primary);
+        }
+
+        .faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease;
+        }
+
+        .faq-item.open .faq-answer { max-height: 400px; }
+
+        .faq-answer-inner {
+            padding: 0 20px 18px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            border-top: 1px solid var(--border);
+            padding-top: 14px;
+        }
+
+        /* ── SEO CONTENT ── */
+        .content-bg {
+            background: var(--bg-light);
+        }
+
+        .content-wrapper {
             max-width: 800px;
             margin: 0 auto;
         }
 
-        .faq-item {
-            margin-bottom: 20px;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            overflow: hidden;
+        .content-wrapper h2 {
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
         }
 
-        .faq-question {
-            background: #f8f9fa;
-            padding: 20px;
-            cursor: pointer;
+        .content-wrapper h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-top: 32px;
+            margin-bottom: 10px;
+        }
+
+        .content-wrapper p {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 14px;
+        }
+
+        .content-wrapper ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .content-wrapper ul li {
+            font-size: 14px;
+            color: var(--text-secondary);
+            padding: 8px 12px;
+            background: white;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
             display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .content-wrapper ul li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* ── FOOTER ── */
+        .footer {
+            background: var(--bg-dark);
+            color: rgba(255,255,255,0.7);
+            padding: 48px 20px 28px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 32px;
+            align-items: start;
+            margin-bottom: 32px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .footer-brand-icon {
+            width: 34px;
+            height: 34px;
+            background: var(--gradient);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .footer-brand-name {
+            color: white;
+            font-weight: 700;
+            font-size: 17px;
+        }
+
+        .footer-tagline {
+            font-size: 14px;
+            line-height: 1.6;
+            max-width: 320px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: white; }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
             justify-content: space-between;
             align-items: center;
-            font-weight: 600;
-            color: #333;
-            transition: background 0.3s;
         }
 
-        .faq-question:hover {
-            background: #e9ecef;
+        .footer-copy {
+            font-size: 13px;
         }
 
-        .faq-answer {
-            padding: 0 20px;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
-            color: #666;
+        .footer-disclaimer {
+            font-size: 12px;
+            max-width: 520px;
+            line-height: 1.5;
+            opacity: 0.6;
         }
 
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding: 20px;
-        }
-
-        .faq-item.active .faq-toggle {
-            transform: rotate(180deg);
-        }
-
-        .faq-toggle {
-            transition: transform 0.3s;
-            font-size: 20px;
-        }
-
-        .footer {
-            background: #2c3e50;
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-        }
-
-        .loader {
-            display: inline-block;
-            width: 18px;
-            height: 18px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @media (max-width: 768px) {
-            .hero h2 {
-                font-size: 32px;
+        @media (max-width: 640px) {
+            .footer-top {
+                grid-template-columns: 1fr;
             }
-
-            .section-title {
-                font-size: 28px;
+            .footer-links {
+                justify-content: flex-start;
             }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
 
-            .url-input-container {
+        /* ── RESPONSIVE ── */
+        @media (max-width: 500px) {
+            .input-row {
                 flex-direction: column;
             }
+            .btn-icon { width: 100%; justify-content: center; }
+            .hero { padding: 40px 16px 64px; }
+            .section { padding: 52px 16px; }
+        }
 
-            .btn-secondary {
-                width: 100%;
+        /* ── ANIMATIONS ── */
+        @media (prefers-reduced-motion: no-preference) {
+            .how-card,
+            .feature-card,
+            .platform-tile {
+                opacity: 0;
+                transform: translateY(20px);
+                animation: fadeUp 0.5s ease forwards;
             }
+            .how-card:nth-child(1) { animation-delay: 0.05s; }
+            .how-card:nth-child(2) { animation-delay: 0.12s; }
+            .how-card:nth-child(3) { animation-delay: 0.19s; }
+        }
 
-            .platforms {
-                gap: 20px;
-            }
-
-            .platform-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 24px;
-            }
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <h1>🎬 Free Video Downloader</h1>
-        </div>
-    </header>
 
+    <a href="#downloader" class="skip-link">Skip to downloader</a>
+
+    <!-- ── NAVIGATION ── -->
+    <nav class="nav" role="navigation" aria-label="Main navigation">
+        <div class="nav-inner">
+            <a href="/" class="nav-brand" aria-label="Free Video Downloader – Home">
+                <div class="nav-brand-icon" aria-hidden="true">⬇️</div>
+                <span>VideoSave</span>
+            </a>
+            <ul class="nav-links" role="list">
+                <li><a href="#how-it-works">How it works</a></li>
+                <li><a href="#platforms">Platforms</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ── HERO ── -->
     <section class="hero">
-        <div class="container">
-            <h2>YouTube Video Downloader - Download Videos in HD Quality</h2>
-            <p>Download videos from YouTube, Instagram, TikTok, Facebook, Twitter, Vimeo & 1000+ sites</p>
-            
-            <div class="platforms">
-                <div class="platform-item">
-                    <div class="platform-icon">▶️</div>
-                    <div class="platform-name">YouTube</div>
+        <div class="hero-badge" aria-label="Supports 1000+ platforms">
+            <span aria-hidden="true">✦</span> 1000+ Platforms Supported
+        </div>
+        <h1>Download Any Video,<br>Anywhere</h1>
+        <p class="hero-sub">Paste a link from YouTube, Instagram, TikTok, or any other platform and save the video to your device — free, fast, no sign-up needed.</p>
+
+        <!-- DOWNLOADER TOOL -->
+        <div class="tool-card" id="downloader">
+            <p class="tool-label">Paste your video link</p>
+            <form id="downloadForm" novalidate>
+                <div class="input-row">
+                    <input
+                        type="url"
+                        id="url"
+                        name="url"
+                        placeholder="https://www.youtube.com/watch?v=..."
+                        aria-label="Video URL"
+                        autocomplete="off"
+                        autocorrect="off"
+                        spellcheck="false"
+                    >
+                    <button type="button" class="btn-icon" id="pasteBtn" aria-label="Paste from clipboard">📋 Paste</button>
+                    <button type="button" class="btn-icon" id="clearBtn" aria-label="Clear input">✕</button>
                 </div>
-                <div class="platform-item">
-                    <div class="platform-icon">📷</div>
-                    <div class="platform-name">Instagram</div>
-                </div>
-                <div class="platform-item">
-                    <div class="platform-icon">🎵</div>
-                    <div class="platform-name">TikTok</div>
-                </div>
-                <div class="platform-item">
-                    <div class="platform-icon">👥</div>
-                    <div class="platform-name">Facebook</div>
-                </div>
-                <div class="platform-item">
-                    <div class="platform-icon">🐦</div>
-                    <div class="platform-name">Twitter</div>
-                </div>
-                <div class="platform-item">
-                    <div class="platform-icon">📹</div>
-                    <div class="platform-name">Vimeo</div>
-                </div>
-            </div>
-            
-            <div class="download-box">
-                <form id="downloadForm">
-                    <div class="url-input-container">
-                        <input 
-                            type="text" 
-                            id="url" 
-                            placeholder="Paste YouTube, Instagram, TikTok video URL here..." 
-                            required
-                        >
-                        <button type="button" class="btn-secondary" id="pasteBtn">Paste</button>
-                        <button type="button" class="btn-secondary" id="clearBtn">Clear</button>
-                    </div>
-                    
-                    <button type="submit" class="btn-primary" id="downloadBtn">
-                        Download Video
-                    </button>
-                </form>
-                
-                <div id="status" class="status"></div>
-            </div>
+                <button type="submit" class="btn-download" id="downloadBtn">
+                    <span id="btnIcon" aria-hidden="true">⬇️</span>
+                    <span id="btnText">Download Video</span>
+                </button>
+            </form>
+            <div id="status" class="status" role="alert" aria-live="polite"></div>
         </div>
     </section>
 
-    <section class="section">
+    <!-- PLATFORM CHIPS -->
+    <div class="platforms-strip" aria-hidden="true">
+        <div class="platforms-strip-inner">
+            <span class="platform-chip"><span>▶️</span> YouTube</span>
+            <span class="platform-chip"><span>📷</span> Instagram</span>
+            <span class="platform-chip"><span>🎵</span> TikTok</span>
+            <span class="platform-chip"><span>👥</span> Facebook</span>
+            <span class="platform-chip"><span>🐦</span> Twitter / X</span>
+            <span class="platform-chip"><span>🎬</span> Vimeo</span>
+            <span class="platform-chip"><span>+1000 more</span></span>
+        </div>
+    </div>
+
+    <!-- ── HOW IT WORKS ── -->
+    <section class="section" id="how-it-works" aria-labelledby="how-heading">
         <div class="container">
-            <h2 class="section-title">How to Download YouTube Videos & Instagram Reels?</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-icon">📋</div>
-                    <h3>Copy Video URL</h3>
-                    <p>Open YouTube, Instagram, or TikTok app, find the video you want to download, and copy the video link from the address bar or share button</p>
+            <p class="section-label">Simple process</p>
+            <h2 class="section-title" id="how-heading">Download in 3 easy steps</h2>
+            <p class="section-desc">No software to install, no account to create. Just copy, paste, and download.</p>
+            <div class="how-grid">
+                <div class="how-card">
+                    <div class="how-number" aria-hidden="true">1</div>
+                    <div class="how-icon" aria-hidden="true">📋</div>
+                    <h3>Copy the link</h3>
+                    <p>Open the video on any platform, tap the share button, and copy the link to your clipboard.</p>
                 </div>
-                <div class="step">
-                    <div class="step-icon">📌</div>
-                    <h3>Paste Link & Download</h3>
-                    <p>Paste the YouTube or Instagram video URL into our downloader above and click the "Download Video" button to start processing</p>
+                <div class="how-card">
+                    <div class="how-number" aria-hidden="true">2</div>
+                    <div class="how-icon" aria-hidden="true">📌</div>
+                    <h3>Paste it above</h3>
+                    <p>Click the input field above, paste the link, and hit the Download button.</p>
                 </div>
-                <div class="step">
-                    <div class="step-icon">⬇️</div>
-                    <h3>Save to Device</h3>
-                    <p>Your YouTube video or Instagram reel will be downloaded in high quality MP4 format to your device instantly</p>
+                <div class="how-card">
+                    <div class="how-number" aria-hidden="true">3</div>
+                    <div class="how-icon" aria-hidden="true">💾</div>
+                    <h3>Save to your device</h3>
+                    <p>Your video downloads automatically in the best available quality. Done.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section seo-content">
+    <!-- ── SUPPORTED PLATFORMS ── -->
+    <section class="section platforms-bg" id="platforms" aria-labelledby="platforms-heading">
         <div class="container">
-            <h2>Best Free Online Video Downloader for YouTube, Instagram & TikTok</h2>
-            <p>Looking for a reliable <span class="keyword-highlight">YouTube video downloader</span> or <span class="keyword-highlight">Instagram reels downloader</span>? Our free online video downloader lets you <span class="keyword-highlight">download YouTube videos to MP4</span>, save Instagram reels, and download TikTok videos without watermark - all in one place!</p>
-
-            <h3>Download YouTube Videos in HD Quality</h3>
-            <p>Our <span class="keyword-highlight">YouTube downloader</span> supports all video formats and qualities. You can easily <span class="keyword-highlight">download YouTube videos</span> in 1080p, 720p, 4K, or even 8K resolution. Simply paste the YouTube video URL and get your video downloaded instantly. No software installation required - it's a completely <span class="keyword-highlight">online YouTube video downloader</span>.</p>
-
-            <h3>Instagram Video Downloader & Reels Downloader</h3>
-            <p>Save your favorite Instagram content with our powerful <span class="keyword-highlight">Instagram video downloader</span>. Download Instagram reels, IGTV videos, stories, and regular posts in their original quality. Our tool helps you <span class="keyword-highlight">download Instagram videos</span> without any watermark, making it the best Instagram downloader available online.</p>
-
-            <h3>TikTok Video Downloader Without Watermark</h3>
-            <p>Want to save TikTok videos without that annoying watermark? Our <span class="keyword-highlight">TikTok downloader</span> removes watermarks automatically. You can <span class="keyword-highlight">download TikTok videos</span> in HD quality and save them directly to your phone or computer. It's the fastest <span class="keyword-highlight">TikTok video downloader</span> that works on all devices.</p>
-
-            <h3>Multi-Platform Video Downloader</h3>
-            <p>Besides YouTube, Instagram, and TikTok, our universal <span class="keyword-highlight">video downloader</span> supports:</p>
-            <ul>
-                <li><strong>Facebook Video Downloader</strong> - Download Facebook videos and reels</li>
-                <li><strong>Twitter Video Downloader</strong> - Save Twitter/X videos easily</li>
-                <li><strong>Vimeo Downloader</strong> - Download Vimeo videos in original quality</li>
-                <li><strong>Dailymotion Downloader</strong> - Save Dailymotion videos</li>
-                <li><strong>And 1000+ more sites</strong> - Download from any video platform</li>
-            </ul>
-
-            <h3>Why Choose Our YouTube & Instagram Downloader?</h3>
-            <ul>
-                <li><strong>100% Free</strong> - No registration, no hidden fees, unlimited downloads</li>
-                <li><strong>HD Quality Downloads</strong> - Download videos in 1080p, 4K quality</li>
-                <li><strong>No Watermark</strong> - TikTok and Instagram videos without watermark</li>
-                <li><strong>Fast Download Speed</strong> - Optimized servers for quick downloads</li>
-                <li><strong>All Devices Supported</strong> - Works on iPhone, Android, PC, Mac</li>
-                <li><strong>Safe & Secure</strong> - No malware, no viruses, completely safe</li>
-                <li><strong>YouTube to MP4</strong> - Convert YouTube videos to MP4 format</li>
-                <li><strong>YouTube to MP3</strong> - Extract audio from YouTube videos</li>
-            </ul>
-
-            <h3>Popular Video Downloader Keywords</h3>
-            <p>Our tool is optimized for all popular search queries including: <span class="keyword-highlight">youtube downloader</span>, <span class="keyword-highlight">download youtube video</span>, <span class="keyword-highlight">youtube to mp4</span>, <span class="keyword-highlight">youtube to mp3</span>, <span class="keyword-highlight">instagram video downloader</span>, <span class="keyword-highlight">download instagram reels</span>, <span class="keyword-highlight">tiktok downloader no watermark</span>, <span class="keyword-highlight">save instagram video</span>, <span class="keyword-highlight">free video downloader</span>, <span class="keyword-highlight">online video downloader</span>, and many more!</p>
+            <p class="section-label">Wide compatibility</p>
+            <h2 class="section-title" id="platforms-heading">Works with your favourite platforms</h2>
+            <p class="section-desc">Our downloader is powered by yt-dlp and supports over 1000 video sites worldwide.</p>
+            <div class="platform-grid">
+                <div class="platform-tile">
+                    <span class="platform-tile-icon" aria-hidden="true">▶️</span>
+                    <div class="platform-tile-name">YouTube</div>
+                    <div class="platform-tile-sub">Videos & Shorts</div>
+                </div>
+                <div class="platform-tile">
+                    <span class="platform-tile-icon" aria-hidden="true">📷</span>
+                    <div class="platform-tile-name">Instagram</div>
+                    <div class="platform-tile-sub">Reels, Posts, IGTV</div>
+                </div>
+                <div class="platform-tile">
+                    <span class="platform-tile-icon" aria-hidden="true">🎵</span>
+                    <div class="platform-tile-name">TikTok</div>
+                    <div class="platform-tile-sub">Videos</div>
+                </div>
+                <div class="platform-tile">
+                    <span class="platform-tile-icon" aria-hidden="true">👥</span>
+                    <div class="platform-tile-name">Facebook</div>
+                    <div class="platform-tile-sub">Videos & Reels</div>
+                </div>
+                <div class="platform-tile">
+                    <span class="platform-tile-icon" aria-hidden="true">🐦</span>
+                    <div class="platform-tile-name">Twitter / X</div>
+                    <div class="platform-tile-sub">Videos & GIFs</div>
+                </div>
+                <div class="platform-tile">
+                    <span class="platform-tile-icon" aria-hidden="true">🎬</span>
+                    <div class="platform-tile-name">Vimeo</div>
+                    <div class="platform-tile-sub">All qualities</div>
+                </div>
+                <div class="platform-tile">
+                    <span class="platform-tile-icon" aria-hidden="true">📺</span>
+                    <div class="platform-tile-name">Dailymotion</div>
+                    <div class="platform-tile-sub">Videos</div>
+                </div>
+                <div class="platform-tile">
+                    <span class="platform-tile-icon" aria-hidden="true">🌐</span>
+                    <div class="platform-tile-name">1000+ More</div>
+                    <div class="platform-tile-sub">Any supported site</div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="section features">
+    <!-- ── FEATURES ── -->
+    <section class="section" aria-labelledby="features-heading">
         <div class="container">
-            <h2 class="section-title">Why Our YouTube Downloader is the Best Choice?</h2>
+            <p class="section-label">Why choose us</p>
+            <h2 class="section-title" id="features-heading">Everything you need, nothing you don't</h2>
+            <p class="section-desc">A clean, honest tool built to make saving videos simple and reliable.</p>
             <div class="feature-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Lightning Fast</h3>
-                    <p>Download YouTube videos in seconds with our optimized servers. Fastest video downloader for YouTube, Instagram, and TikTok</p>
+                    <div class="feature-icon-wrap" aria-hidden="true">⚡</div>
+                    <div class="feature-text">
+                        <h3>Fast downloads</h3>
+                        <p>Videos are fetched and delivered quickly with no unnecessary delays or queues.</p>
+                    </div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>All Devices</h3>
-                    <p>Works on iPhone, Android, PC, Mac, iPad, and tablets. Download videos anywhere, anytime</p>
+                    <div class="feature-icon-wrap" aria-hidden="true">📱</div>
+                    <div class="feature-text">
+                        <h3>Works on any device</h3>
+                        <p>iPhone, Android, tablet, laptop — if it has a browser, it works.</p>
+                    </div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🎥</div>
-                    <h3>HD Quality</h3>
-                    <p>Download YouTube videos in 4K, 1080p, 720p. Get Instagram reels and TikTok videos in original quality</p>
+                    <div class="feature-icon-wrap" aria-hidden="true">🎥</div>
+                    <div class="feature-text">
+                        <h3>Best available quality</h3>
+                        <p>We automatically select the highest quality the platform makes available.</p>
+                    </div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Safe & Private</h3>
-                    <p>No registration needed. Secure video downloads with SSL encryption. Your privacy is our priority</p>
+                    <div class="feature-icon-wrap" aria-hidden="true">🔒</div>
+                    <div class="feature-text">
+                        <h3>Private & secure</h3>
+                        <p>No account needed. We don't store your links or downloaded files.</p>
+                    </div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🌐</div>
-                    <h3>1000+ Sites</h3>
-                    <p>Download from YouTube, Instagram, TikTok, Facebook, Twitter, Vimeo, Dailymotion, and 1000+ platforms</p>
+                    <div class="feature-icon-wrap" aria-hidden="true">🆓</div>
+                    <div class="feature-text">
+                        <h3>Completely free</h3>
+                        <p>No subscriptions, no credits, no hidden fees. Free now, free always.</p>
+                    </div>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🆓</div>
-                    <h3>100% Free</h3>
-                    <p>Completely free YouTube downloader. No fees, no limits, no watermarks. Download unlimited videos</p>
+                    <div class="feature-icon-wrap" aria-hidden="true">🌐</div>
+                    <div class="feature-text">
+                        <h3>Huge platform support</h3>
+                        <p>Powered by yt-dlp, supporting 1000+ video sites around the world.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section faq">
+    <!-- ── TRUST STATS ── -->
+    <section class="section trust-bg" aria-label="Trust and usage statistics">
         <div class="container">
-            <h2 class="section-title">Frequently Asked Questions - Video Downloader</h2>
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <div class="trust-stat">1000+</div>
+                    <div class="trust-label">Supported platforms</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-stat">Free</div>
+                    <div class="trust-label">No hidden charges</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-stat">0</div>
+                    <div class="trust-label">Accounts required</div>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-stat">Any</div>
+                    <div class="trust-label">Device or browser</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section class="section" id="faq" aria-labelledby="faq-heading">
+        <div class="container">
+            <p class="section-label">Got questions?</p>
+            <h2 class="section-title" id="faq-heading">Frequently asked questions</h2>
+            <p class="section-desc">Answers to the most common things people ask about our tool.</p>
             <div class="faq-list">
+
                 <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How to download YouTube videos for free?</span>
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        To download YouTube videos free, simply copy the YouTube video URL, paste it in our YouTube downloader above, and click Download. Our free YouTube video downloader will process and download your video in MP4 format instantly.
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How do I download a video?</span>
+                        <span class="faq-chevron" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <div class="faq-answer-inner">
+                            Copy the video URL from your browser or from the platform's share menu, paste it into the input field at the top of this page, and click Download. The file will save directly to your device.
+                        </div>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Can I download Instagram reels and videos?</span>
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        Yes! Our Instagram video downloader allows you to download Instagram reels, IGTV, stories, and regular posts. Just paste the Instagram video URL and download in high quality without watermark.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How to download TikTok videos without watermark?</span>
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        Our TikTok downloader automatically removes watermarks. Copy the TikTok video link, paste it here, and download TikTok videos without watermark in HD quality. It works on all devices - iPhone, Android, and PC.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Is this YouTube downloader free to use?</span>
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        Absolutely! Our online video downloader is 100% free with no hidden charges, no registration required, and unlimited downloads. Download as many YouTube, Instagram, or TikTok videos as you want.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>What video quality can I download?</span>
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        You can download videos in their original quality - 4K, 1080p, 720p for YouTube videos. Instagram reels and TikTok videos are downloaded in HD quality as available on the source platform.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
+                    <button class="faq-question" aria-expanded="false">
                         <span>Which platforms are supported?</span>
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        Our universal video downloader supports YouTube, Instagram, TikTok, Facebook, Twitter/X, Vimeo, Dailymotion, and 1000+ other video platforms. It's the best all-in-one video downloader online.
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Can I convert YouTube to MP3?</span>
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        Yes, you can download YouTube videos and extract audio. Our YouTube to MP3 converter allows you to download YouTube videos as MP3 audio files for offline listening.
+                        <span class="faq-chevron" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <div class="faq-answer-inner">
+                            We support YouTube, Instagram, TikTok, Facebook, Twitter/X, Vimeo, Dailymotion, and over 1000 other video platforms. If yt-dlp supports it, our tool does too.
+                        </div>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Is it legal to download YouTube videos?</span>
-                        <span class="faq-toggle">▼</span>
-                    </div>
-                    <div class="faq-answer">
-                        Downloading videos for personal use is generally allowed, but copyright belongs to the content creator. Please respect copyright laws and download only content you have permission to use. Use our YouTube downloader responsibly.
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Is it really free?</span>
+                        <span class="faq-chevron" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <div class="faq-answer-inner">
+                            Yes, completely free. No account, no subscription, and no hidden fees — ever.
+                        </div>
                     </div>
                 </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Will the downloaded video have a watermark?</span>
+                        <span class="faq-chevron" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <div class="faq-answer-inner">
+                            We download the original file directly from the platform — we don't add any watermarks ourselves. Whether the source video has a watermark depends on the platform.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What video quality will I get?</span>
+                        <span class="faq-chevron" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <div class="faq-answer-inner">
+                            We automatically fetch the best quality the platform makes available, which can range from 360p up to 4K depending on the source.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Does it work on my phone?</span>
+                        <span class="faq-chevron" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <div class="faq-answer-inner">
+                            Yes. The tool works in any modern browser on iPhone, Android, tablets, and computers. No app installation required.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Why is my download failing?</span>
+                        <span class="faq-chevron" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <div class="faq-answer-inner">
+                            A few common reasons: the video may be private or age-restricted, the platform may have recently changed how it serves content, or the URL may not be in the right format. Make sure you're copying the full video URL (not just the homepage or a search result), then try again.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Is it safe and legal to download videos?</span>
+                        <span class="faq-chevron" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="faq-answer" role="region">
+                        <div class="faq-answer-inner">
+                            Our tool is safe — it contains no malware or tracking. Regarding legality: downloading publicly available content for personal, offline use is generally accepted in many regions. However, downloading copyrighted content without the rights holder's permission may violate platform terms of service or local copyright laws. Use this tool responsibly and respect content creators.
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <footer class="footer">
+    <!-- ── SEO CONTENT ── -->
+    <section class="section content-bg" aria-label="About this tool">
         <div class="container">
-            <p>&copy; 2025 Free Video Downloader - Download YouTube, Instagram, TikTok Videos Online</p>
-            <p style="margin-top: 10px; font-size: 14px; opacity: 0.8;">Best YouTube Downloader | Instagram Video Downloader | TikTok Downloader | Free Online Video Downloader</p>
+            <div class="content-wrapper">
+                <h2>About our video downloader</h2>
+                <p>This tool lets you save videos from YouTube, Instagram, TikTok, and hundreds of other platforms directly to your device — no software to install, no account to create. Just paste a link and download.</p>
+
+                <h3>How to download YouTube videos</h3>
+                <p>Go to YouTube, find the video you want to save, and copy the URL from your browser's address bar. Come back here, paste it into the box at the top of the page, and click Download. The video will be saved in the best quality available.</p>
+
+                <h3>Saving Instagram reels and posts</h3>
+                <p>On Instagram, tap the three dots (⋯) on a post or reel, select "Copy link", then paste that link into the downloader above. We support public posts, reels, and IGTV videos.</p>
+
+                <h3>Downloading TikTok videos</h3>
+                <p>Open the TikTok video you want to save, tap Share, and copy the link. Paste it here and hit Download. We fetch the original file directly from TikTok's servers.</p>
+
+                <h3>Supported formats and devices</h3>
+                <p>Downloaded files are typically in MP4 format, which plays on virtually every device and media player. The tool works on:</p>
+                <ul>
+                    <li>iPhone and iPad (Safari, Chrome)</li>
+                    <li>Android phones and tablets</li>
+                    <li>Windows PC (Chrome, Firefox, Edge)</li>
+                    <li>Mac (Safari, Chrome, Firefox)</li>
+                    <li>Linux (any modern browser)</li>
+                </ul>
+
+                <h3>Troubleshooting tips</h3>
+                <p>If a download doesn't work, try these steps:</p>
+                <ul>
+                    <li>Make sure the video is publicly accessible</li>
+                    <li>Copy the full URL, not just the domain</li>
+                    <li>Try a different browser</li>
+                    <li>Check the video isn't age-restricted or private</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div>
+                    <div class="footer-brand">
+                        <div class="footer-brand-icon" aria-hidden="true">⬇️</div>
+                        <span class="footer-brand-name">VideoSave</span>
+                    </div>
+                    <p class="footer-tagline">A free, fast, and private video downloader supporting 1000+ platforms. No sign-up required.</p>
+                </div>
+                <nav class="footer-links" aria-label="Footer navigation">
+                    <a href="/privacy">Privacy Policy</a>
+                    <a href="/terms">Terms of Use</a>
+                    <a href="/contact">Contact</a>
+                </nav>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copy">&copy; 2025 VideoSave. All rights reserved.</p>
+                <p class="footer-disclaimer">This tool is intended for personal use only. Respect copyright laws and platform terms of service. We do not store any links or downloaded files.</p>
+            </div>
         </div>
     </footer>
 
     <script>
+        // ── Download form ──
         const form = document.getElementById('downloadForm');
         const urlInput = document.getElementById('url');
         const downloadBtn = document.getElementById('downloadBtn');
+        const btnText = document.getElementById('btnText');
+        const btnIcon = document.getElementById('btnIcon');
+        const statusEl = document.getElementById('status');
         const pasteBtn = document.getElementById('pasteBtn');
         const clearBtn = document.getElementById('clearBtn');
-        const status = document.getElementById('status');
+
+        function setStatus(type, msg) {
+            statusEl.className = 'status show ' + type;
+            statusEl.innerHTML = (type === 'info' ? '<span class="spinner"></span>' : (type === 'success' ? '✅' : '⚠️')) + ' <span>' + msg + '</span>';
+        }
+
+        function clearStatus() {
+            statusEl.className = 'status';
+            statusEl.innerHTML = '';
+        }
+
+        function setLoading(loading) {
+            downloadBtn.disabled = loading;
+            if (loading) {
+                btnIcon.style.display = 'none';
+                btnText.textContent = 'Downloading…';
+                const spinner = document.createElement('span');
+                spinner.className = 'spinner';
+                spinner.id = 'btnSpinner';
+                downloadBtn.insertBefore(spinner, downloadBtn.firstChild);
+            } else {
+                const s = document.getElementById('btnSpinner');
+                if (s) s.remove();
+                btnIcon.style.display = '';
+                btnText.textContent = 'Download Video';
+            }
+        }
 
         pasteBtn.addEventListener('click', async () => {
             try {
                 const text = await navigator.clipboard.readText();
-                urlInput.value = text;
-            } catch (err) {
-                showStatus('Please paste manually or grant clipboard permission', 'info');
+                urlInput.value = text.trim();
+                urlInput.focus();
+                clearStatus();
+            } catch {
+                urlInput.focus();
+                setStatus('error', 'Clipboard access denied. Please paste manually (Ctrl+V / ⌘+V).');
             }
         });
 
         clearBtn.addEventListener('click', () => {
             urlInput.value = '';
-            status.style.display = 'none';
+            urlInput.focus();
+            clearStatus();
         });
 
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
             const url = urlInput.value.trim();
-            if (!url) return;
+            if (!url) {
+                setStatus('error', 'Please paste a video URL first.');
+                urlInput.focus();
+                return;
+            }
 
-            downloadBtn.disabled = true;
-            downloadBtn.innerHTML = '<span class="loader"></span>Downloading...';
-            showStatus('Processing your video, please wait...', 'info');
+            setLoading(true);
+            setStatus('info', 'Fetching your video — this may take a moment…');
 
             try {
                 const response = await fetch('/download', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ url })
                 });
 
-                if (response.ok) {
-                    const blob = await response.blob();
-                    const downloadUrl = window.URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = downloadUrl;
-                    
-                    const filename = response.headers.get('Content-Disposition')
-                        ?.split('filename=')[1]
-                        ?.replace(/"/g, '') || 'video';
-                    
-                    a.download = filename;
-                    document.body.appendChild(a);
-                    a.click();
-                    window.URL.revokeObjectURL(downloadUrl);
-                    a.remove();
-                    
-                    showStatus('✅ Video downloaded successfully! Check your downloads folder.', 'success');
-                } else {
-                    const error = await response.json();
-                    showStatus(`❌ Error: ${error.error}`, 'error');
+                if (!response.ok) {
+                    let detail = '';
+                    try {
+                        const data = await response.json();
+                        detail = data.error || '';
+                    } catch {}
+                    throw new Error(detail || 'Download failed (status ' + response.status + ')');
                 }
-            } catch (error) {
-                showStatus(`❌ Error: ${error.message}`, 'error');
+
+                // Trigger browser download
+                const blob = await response.blob();
+                const disposition = response.headers.get('Content-Disposition') || '';
+                const match = disposition.match(/filename\*?=(?:UTF-8'')?["']?([^"';\n]+)/i);
+                const filename = match ? decodeURIComponent(match[1]) : 'video.mp4';
+
+                const blobUrl = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                setTimeout(() => URL.revokeObjectURL(blobUrl), 10000);
+
+                setStatus('success', 'Download started! Check your downloads folder.');
+            } catch (err) {
+                setStatus('error', err.message || 'Something went wrong. Please try again.');
             } finally {
-                downloadBtn.disabled = false;
-                downloadBtn.innerHTML = 'Download Video';
+                setLoading(false);
             }
         });
 
-        document.querySelectorAll('.faq-item').forEach(item => {
-            item.querySelector('.faq-question').addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-                
-                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-                
-                if (!isActive) {
-                    item.classList.add('active');
+        // ── FAQ accordion ──
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const isOpen = item.classList.contains('open');
+                // Close all
+                document.querySelectorAll('.faq-item.open').forEach(el => {
+                    el.classList.remove('open');
+                    el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                });
+                // Toggle clicked
+                if (!isOpen) {
+                    item.classList.add('open');
+                    btn.setAttribute('aria-expanded', 'true');
                 }
             });
         });
-
-        function showStatus(message, type) {
-            status.textContent = message;
-            status.className = `status ${type}`;
-            status.style.display = 'block';
-        }
     </script>
+
 </body>
 </html>

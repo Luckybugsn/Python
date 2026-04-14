@@ -1,0 +1,221 @@
+I have an existing video downloader website that looks bad on mobile, feels outdated, has weak SEO, and is not ranking on Google. I want you to fully redesign and optimize the website while keeping the core functionality same.
+
+==============================
+PROJECT GOAL
+==============================
+Transform the site into a modern, mobile-first, fast, SEO-optimized, clean and trustworthy website.
+
+==============================
+MAIN PROBLEMS
+==============================
+1. Mobile UI is broken and looks like desktop squeezed
+2. Hero section too large and ugly
+3. Spacing and typography inconsistent
+4. Cards and sections look cheap and unbalanced
+5. Too much keyword stuffing in content
+6. Weak SEO structure
+7. No proper trust signals
+8. Poor user experience
+9. Not ranking in search results
+
+==============================
+WHAT TO DO
+==============================
+
+A. FULL UI/UX REDESIGN
+- Create modern premium design
+- Use clean layout, proper spacing, rounded cards, soft shadows
+- Improve header, footer, FAQ, buttons, input box
+- Add smooth animations and transitions
+
+B. MOBILE-FIRST RESPONSIVE DESIGN
+- Optimize for all screen sizes (320px to desktop)
+- Fix oversized hero text
+- Make input full-width and clean
+- Stack buttons properly on mobile
+- No horizontal scroll
+- Proper grid system
+- Cards should adjust (1 column / 2 column)
+- Fix spacing and alignment issues
+
+C. VISUAL HIERARCHY
+Structure page like:
+1. Header
+2. Hero section
+3. Downloader tool
+4. Supported platforms
+5. How it works
+6. Features
+7. Trust/Safety section
+8. FAQ
+9. SEO content
+10. Footer
+
+==============================
+DESIGN STYLE
+==============================
+- Use modern gradient (blue/purple) or clean theme
+- Good typography hierarchy
+- Proper contrast (dark/light sections)
+- Consistent border radius
+- Clean buttons and icons
+- No spammy or outdated design
+
+==============================
+HERO SECTION FIX
+==============================
+- Short, strong headline
+- Small supporting text
+- Clean input box
+- Strong CTA button
+- Compact icons
+- Reduce height on mobile
+
+==============================
+DOWNLOADER TOOL
+==============================
+- Large clean input field
+- Proper download button
+- Loading state UI
+- Error/success message UI
+- Make it main focus of page
+
+==============================
+SUPPORTED PLATFORMS
+==============================
+- Clean icon grid
+- Equal spacing
+- Consistent icon size
+- Mobile friendly layout
+
+==============================
+HOW IT WORKS
+==============================
+- 3 step cards:
+  1. Copy link
+  2. Paste link
+  3. Download
+- Use icons + short text
+- Responsive design
+
+==============================
+FEATURES SECTION
+==============================
+- Fast download
+- Mobile friendly
+- Secure and private
+- No signup required
+- Multiple formats
+- Use small clean cards
+
+==============================
+FAQ REDESIGN
+==============================
+- Modern accordion
+- Smooth open/close
+- Clean spacing
+- Useful answers (not spammy)
+
+==============================
+SEO CONTENT IMPROVEMENT
+==============================
+Rewrite all content:
+- No keyword stuffing
+- Natural human language
+- Clear headings (H1, H2, H3)
+- Helpful content
+- Remove repetitive lines
+
+Add sections like:
+- How to download videos
+- Supported formats
+- Device compatibility
+- Troubleshooting tips
+
+==============================
+TECHNICAL SEO
+==============================
+Add:
+- Title tag
+- Meta description
+- Canonical tag
+- Open Graph tags
+- Twitter cards
+- Favicon
+- Proper HTML structure
+
+Ensure:
+- Only 1 H1
+- Proper heading hierarchy
+- Semantic HTML
+- Alt text where needed
+
+==============================
+PERFORMANCE OPTIMIZATION
+==============================
+- Optimize CSS/JS
+- Reduce load time
+- Lazy loading
+- Improve Core Web Vitals
+- Remove unused code
+
+==============================
+SCHEMA MARKUP
+==============================
+Add:
+- FAQ schema
+- WebSite schema
+- Organization schema
+- WebApplication schema
+
+==============================
+TRUST & LEGAL
+==============================
+Add:
+- Privacy Policy link
+- Terms & Conditions
+- Contact page
+- Disclaimer section
+- Safe usage message
+
+==============================
+ACCESSIBILITY
+==============================
+- Good contrast
+- Readable text
+- Proper labels
+- Mobile-friendly buttons
+- Keyboard navigation support
+
+==============================
+CODE QUALITY
+==============================
+- Clean code
+- Organized CSS
+- No messy inline hacks
+- Maintainable structure
+- Do not break existing functionality
+
+==============================
+FINAL OUTPUT
+==============================
+Provide:
+1. Updated full code
+2. Responsive UI
+3. SEO optimized content
+4. Improved FAQ
+5. Header & footer redesign
+6. Meta tags
+7. Schema markup
+8. Performance improvements
+9. Summary of fixes
+
+==============================
+IMPORTANT
+==============================
+- Do not just slightly improve — do full upgrade
+- Do not keep old ugly layout
+- Do not overuse keywords
+- Focus on mobile first
+- Keep functionality same
+- Make it look like premium product

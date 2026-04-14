@@ -4,6 +4,25 @@ This is a Flask-based web service that provides video/audio downloading function
 
 # Recent Changes
 
+**April 14, 2026**: Full premium redesign + mobile-first + SEO overhaul
+- Complete UI rebuild: modern indigo/purple gradient theme, clean typography, consistent spacing
+- Sticky frosted-glass navigation with brand logo and anchor links
+- Mobile-first responsive layout (320px → desktop), no horizontal scroll
+- Hero section: compact, strong H1, subtext, clean downloader tool card
+- Platform chips strip integrated into hero bottom
+- "How it works" section with numbered step cards and hover animations
+- Supported platforms grid (8 tiles, responsive columns)
+- Features section with icon+text card layout
+- Trust stats bar (gradient background)
+- FAQ accordion with smooth open/close and proper aria-expanded
+- SEO content section rewritten — no keyword stuffing, natural language
+- Technical SEO: proper title, meta description, canonical, Open Graph, Twitter Cards
+- Schema markup: WebSite, WebApplication, Organization, FAQPage (JSON-LD)
+- Accessibility: skip link, aria labels, role attributes, keyboard navigable FAQ
+- CSS custom properties (design tokens), no inline hacks, maintainable structure
+- Footer with brand, tagline, Privacy/Terms/Contact links, legal disclaimer
+- JavaScript: loading spinner state, blob download trigger, status messages
+
 **October 17, 2025**: Major UI redesign similar to fastdl.app + SEO optimization
 - Redesigned entire landing page with modern, clean aesthetic
 - Added full-page layout with header, hero section, and footer
